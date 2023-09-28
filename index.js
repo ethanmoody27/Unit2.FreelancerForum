@@ -1,3 +1,5 @@
+
+// Arrays containing names, occupations, and initial freelancers' data.
 const names = ["Alice", "Bob", "Carol", "David", "Ethan", "Fred", "Gary", "Helena"];
 const occupations = ["Writer", "Teacher", "Programmer", "Designer", "Engineer", "Consultant"];
 const freelancers = [
@@ -6,6 +8,7 @@ const freelancers = [
     {name: "Carol", occupation: "Programmer", startingPrice: 70}
 ];
 
+// Function that renders the list of the freelancers.
 function renderFreelancers() {
     const freelancersList = document.querySelector("#freelancers");
     freelancersList.innerHTML = "";
@@ -17,6 +20,7 @@ function renderFreelancers() {
     }
 };
 
+// Function that calculates the average starting price of the freelancers.
 function calculateAverageStartingPrice() {
     let totalStartingPrice = 0;
     for (const freelancer of freelancers) {
@@ -26,11 +30,13 @@ function calculateAverageStartingPrice() {
     return totalStartingPrice / freelancers.length;
 };
 
+// Function that updates the displayed average starting price.
 function updateAveragePrice() {
     const averagePriceElement = document.querySelector("#average-price");
     averagePriceElement.textContent = `Average starting price: $${calculateAverageStartingPrice()}`;
 };
 
+// Function that generates a new random freelancer.
 function generateNewFreelancer() {
     const randomName = names[Math.floor(Math.random() * names.length)];
     const randomOccupation = occupations[Math.floor(Math.random() * occupations.length)];
@@ -39,6 +45,7 @@ function generateNewFreelancer() {
     return {name: randomName, occupation: randomOccupation, startingPrice: randomStartingPrice};
 };
 
+// Function that adds a new freelancer every second with a maxium number of freelancers set to 20.
 setInterval (() => {
    if (freelancers.length < 20) {
     const newFreelancer = generateNewFreelancer();
@@ -50,7 +57,6 @@ setInterval (() => {
     }
 }, 1000);
 
+// Initial rendering of freelancers and the average price.
 renderFreelancers();
 updateAveragePrice();
-freelancers.push({name: "David", occupation: "Engineer", startingPrice: 100});
-renderFreelancers();
