@@ -33,7 +33,8 @@ function calculateAverageStartingPrice() {
 // Function that updates the displayed average starting price.
 function updateAveragePrice() {
     const averagePriceElement = document.querySelector("#average-price");
-    averagePriceElement.textContent = `Average starting price: $${calculateAverageStartingPrice()}`;
+    const averagePrice = calculateAverageStartingPrice().toFixed(2);
+    averagePriceElement.textContent = `Average starting price: $${averagePrice}`;
 };
 
 // Function that generates a new random freelancer.
@@ -41,7 +42,6 @@ function generateNewFreelancer() {
     const randomName = names[Math.floor(Math.random() * names.length)];
     const randomOccupation = occupations[Math.floor(Math.random() * occupations.length)];
     const randomStartingPrice = Math.floor(Math.random() * 100) + 1;
-
     return {name: randomName, occupation: randomOccupation, startingPrice: randomStartingPrice};
 };
 
