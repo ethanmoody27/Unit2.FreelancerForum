@@ -8,17 +8,21 @@ const freelancers = [
     {name: "Carol", occupation: "Programmer", startingPrice: 70}
 ];
 
-// Function that renders the list of the freelancers.
+// // Function that renders the list of the freelancers.
 function renderFreelancers() {
     const freelancersList = document.querySelector("#freelancers");
     freelancersList.innerHTML = "";
 
-    for (const freelancer of freelancers) {
+    const freelancerItems = freelancers.map(freelancer => {
         const freelancerItem = document.createElement("li");
         freelancerItem.textContent = `${freelancer.name} - ${freelancer.occupation} - ${freelancer.startingPrice}`;
-        freelancersList.appendChild(freelancerItem);
-    }
-};
+        return freelancerItem;
+    });
+
+    freelancerItems.forEach(item => {
+        freelancersList.appendChild(item);
+    });
+}
 
 // Function that calculates the average starting price of the freelancers.
 function calculateAverageStartingPrice() {
